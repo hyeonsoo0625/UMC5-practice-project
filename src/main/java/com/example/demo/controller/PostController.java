@@ -27,7 +27,7 @@ public class PostController {
 	// 게시글(Post) 작성
 	@PostMapping("/posts")
 	public Long post(
-		@RequestBody PostRequest request
+			@RequestBody PostRequest request
 	) {
 		return postService.post(request);
 	}
@@ -35,7 +35,7 @@ public class PostController {
 	// 조회
 	@GetMapping("/posts")
 	public PostDto post(
-		@RequestParam("id") Long postId
+			@RequestParam("id") Long postId
 	) {
 		return postService.getPost(postId);
 	}
@@ -43,7 +43,7 @@ public class PostController {
 	// 게시글 업데이트
 	@PatchMapping("/posts")
 	public PostUpdateResponse post(
-		@RequestBody PostUpdateRequest request
+			@RequestBody PostUpdateRequest request
 	) {
 		return postService.updatePost(request);
 	}
