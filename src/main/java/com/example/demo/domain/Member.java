@@ -30,6 +30,9 @@ public class Member {
 	// DEFAULT = FetchType.LAZY
 	@OneToMany(mappedBy = "member")
 	private List<Post> posts = new ArrayList<>();
+
+	@OneToMany(mappedBy = "member")
+	private List<Comment> comments = new ArrayList<>();
 	@Builder
 	public Member(String name, Integer age, Gender gender) {
 		this.name = name;
