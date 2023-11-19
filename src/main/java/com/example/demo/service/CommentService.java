@@ -51,4 +51,11 @@ public class CommentService {
                 comment.getText()
         );
     }
+    @Transactional
+    public Long deleteComment(CommentDeleteRequest request){
+        Optional<Comment> optionalComment = commentRepository.findById(request.getId());
+        Comment comment = optionalComment.get();
+        commentRepository.delete(comment);
+        return request.getId();
+    }
 }

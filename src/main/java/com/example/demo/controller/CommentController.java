@@ -34,4 +34,11 @@ public class CommentController {
     ){
         return commentService.updateComment(request);
     }
+
+    @DeleteMapping("/comments/delete")
+    public Long delete(
+            @RequestBody CommentDeleteRequest request
+    ){
+        return commentService.deleteComment(request);
+    }
 }
