@@ -17,9 +17,13 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
-    public Comment(String text, Member member) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Post post;
+
+    public Comment(String text, Member member, Post post) {
         this.text = text;
         this.member = member;
+        this.post = post;
     }
 
     protected Comment() {

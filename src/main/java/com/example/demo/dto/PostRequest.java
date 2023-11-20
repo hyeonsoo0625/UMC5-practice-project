@@ -1,19 +1,10 @@
 package com.example.demo.dto;
 
+import lombok.Getter;
+
+@Getter
 public class PostRequest {
 	private String title;
 	private String text;
 	private Long memberId;
-
-	public Long getMemberId() {
-		return memberId;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public String getText() {
-		return text;
-	}
 }

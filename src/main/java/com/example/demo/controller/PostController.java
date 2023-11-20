@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -15,14 +16,10 @@ import com.example.demo.dto.PostUpdateResponse;
 import com.example.demo.service.PostService;
 
 @RestController
+@RequiredArgsConstructor
 public class PostController {
 
 	private final PostService postService;
-
-	@Autowired
-	public PostController(PostService postService) {
-		this.postService = postService;
-	}
 
 	// 게시글(Post) 작성
 	@PostMapping("/posts")

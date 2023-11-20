@@ -6,6 +6,7 @@ import com.example.demo.domain.Post;
 import com.example.demo.dto.*;
 import com.example.demo.repository.CommentRepository;
 import com.example.demo.repository.MemberRepository;
+import com.example.demo.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,16 +19,19 @@ public class CommentService {
     private final CommentRepository commentRepository;
 
     private final MemberRepository memberRepository;
+    private final PostRepository postRepository;
 
     @Autowired
-    public CommentService(CommentRepository commentRepository, MemberRepository memberRepository) {
+    public CommentService(CommentRepository commentRepository, MemberRepository memberRepository, PostRepository postRepository) {
         this.commentRepository = commentRepository;
         this.memberRepository = memberRepository;
+        this.postRepository = postRepository;
     }
     @Transactional
     public Long create(CommentRequest request){
         Member member = memberRepository.findById(request.getMemberId()).get();
-        Comment comment = new Comment(request.getText(), member);
+        Post post = postRepository.findById(request.getPostId()).get();
+        Comment comment = new Comment(request.getText(), member, post);
         Comment saveComment = commentRepository.save(comment);
         return saveComment.getId();
     }
@@ -37,7 +41,7 @@ public class CommentService {
     public CommentDto getComment(Long commentId){
         Optional<Comment> optionalComment = commentRepository.findById(commentId);
         Comment comment = optionalComment.get();
-        CommentDto dto = new CommentDto(comment.getId(), comment.getText());
+        CommentDto dto = new CommentDto(comment.getId(), comment.getText(), comment.getPost().getId());
         return dto;
     }
 

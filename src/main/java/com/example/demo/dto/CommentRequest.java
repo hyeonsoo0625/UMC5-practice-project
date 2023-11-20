@@ -1,16 +1,10 @@
 package com.example.demo.dto;
 
+import lombok.Getter;
+
+@Getter
 public class CommentRequest {
     private String text;
-
     private Long memberId;
-
-    public String getText() {
-        return text;
-    }
-
-    public Long getMemberId() {
-        return memberId;
-    }
-
+    private Long postId;
 }

@@ -1,5 +1,8 @@
 package com.example.demo.dto;
 
+import lombok.Getter;
+
+@Getter
 public class PostDto {
 
 	private Long id;
@@ -10,16 +13,5 @@ public class PostDto {
 		this.id = id;
 		this.title = title;
 		this.text = text;
-	}
-	public Long getId() {
-		return id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public String getText() {
-		return text;
 	}
 }
