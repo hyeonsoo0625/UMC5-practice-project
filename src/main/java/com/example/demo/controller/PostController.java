@@ -1,18 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.dto.PostDto;
-import com.example.demo.dto.PostRequest;
-import com.example.demo.dto.PostUpdateRequest;
-import com.example.demo.dto.PostUpdateResponse;
 import com.example.demo.service.PostService;
 
 @RestController
@@ -43,6 +35,13 @@ public class PostController {
 			@RequestBody PostUpdateRequest request
 	) {
 		return postService.updatePost(request);
+	}
+
+	@DeleteMapping("/posts/delete")
+	public Long post(
+			@RequestBody PostDeleteRequest request
+	){
+		return postService.deletePost(request);
 	}
 
 

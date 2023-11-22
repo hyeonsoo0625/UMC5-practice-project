@@ -3,16 +3,13 @@ package com.example.demo.service;
 import java.util.Optional;
 
 import com.example.demo.domain.Member;
+import com.example.demo.dto.*;
 import com.example.demo.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.domain.Post;
-import com.example.demo.dto.PostDto;
-import com.example.demo.dto.PostRequest;
-import com.example.demo.dto.PostUpdateRequest;
-import com.example.demo.dto.PostUpdateResponse;
 import com.example.demo.repository.PostRepository;
 
 @Service
@@ -60,6 +57,14 @@ public class PostService {
 				post.getText(),
 				post.getTitle()
 		);
+	}
+
+	@Transactional
+	public Long deletePost(PostDeleteRequest request){
+		Optional<Post> optionalPost = postRepository.findById(request.getId());
+		Post post = optionalPost.get();
+		postRepository.delete(post);
+		return request.getId();
 	}
 
 

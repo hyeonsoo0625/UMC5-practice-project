@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class CommentController {
     private final CommentService commentService;
 
-    @PostMapping("/comments")
+    @PostMapping("/comments/create")
     public Long comment(
             @RequestBody CommentRequest request) {
         return commentService.create(request);
